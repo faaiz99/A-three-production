@@ -5,17 +5,19 @@
 
 /* Home */
 
+
 .banner{
     width: 100%;
 }
+
 
 .banner .navbar-brand{
 
     margin-left: 5%;
     color: white;
-    font-weight: 700;
-    font-size: 1.7em;
-    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 1.10em;
+    font-family: 'Nunito', sans-serif;
 }
 
 .banner .navbar-nav{
@@ -23,9 +25,9 @@
 }
 
 .navbar{
-    background-color: #774181;
+    background-color: #352961;
     width: 100%;
-    
+
     /* margin-left: 0%; */
     /* margin-right: 0%; */
 }
@@ -35,9 +37,10 @@
 }
 
 .banner .collapse .navbar-nav li a{
-    color:white; 
-    font-weight: 200; 
-    font-size:1.3em;
+    color:white;
+    font-weight: 450;
+    font-size:1.0em;
+    font-family: 'Nunito', sans-serif;
 }
 
 .banner .collapse .navbar-nav li a:hover{
@@ -95,7 +98,7 @@
     background-size:100% 100%;
 }
 .footer{
-   background-color:#774181;
+   background-color:#e6b2c6;
    position: relative;
 }
 
@@ -109,7 +112,7 @@
 }
 
 .cover-text{
-    font-size:50px
+    font-size:40px
 }
 
 /* Sign up */
@@ -183,7 +186,7 @@
 .navbar1 ul li{
     padding-left: 3%;
     padding-top: 7%;
-} 
+}
 
 
  .navbar1 ul a{
@@ -196,7 +199,7 @@
 }
 
 .navbar1 ul a:hover{
-    color: rgb(154, 151, 151);    
+    color: rgb(154, 151, 151);
 }
 
 .offcanvas-body{
@@ -207,25 +210,25 @@
 .offcanvas-body ul li{
     padding-left: 3%;
     padding-top: 7%;
-} 
+}
 
 .offcanvas-body ul a{
     color: white;
 }
 
 .offcanvas-body ul a:hover{
-    color: rgb(154, 151, 151);    
+    color: rgb(154, 151, 151);
 }
 
 .offcanvas-body p{
-    color:white; 
+    color:white;
     font-size:20px;
     border-bottom: 1px solid #867bac;
     padding-bottom: 20px;
 }
 
 .table{
-    border: 1px solid black;   
+    border: 1px solid black;
 }
 
 .tables h3{
@@ -237,7 +240,7 @@
     height: 70px;
     padding-top: 15px;
     background-color: red;
-    
+
 }
 
 
@@ -271,7 +274,7 @@ table, tr{
 table, tr, th{
     padding-right: 150px;
     padding-bottom: 10px;
-    
+
 }
 
 table, tr, td{
@@ -307,14 +310,14 @@ table, tr, td{
     #demo , div.container-fluid.mt-3{
             display: none;
     }
-  
+
 }
 @media only screen and (max-width: 1201px) {
 
     nav.navbar1.navbar-expand-xl {
         display: none;
     }
-   
+
 }
 
 /* text animation */
@@ -324,7 +327,7 @@ table, tr, td{
     /* font-weight: 900; */
     /* font-size: 3.3em; */
   }
-  
+
   .ml6 .text-wrapper {
     position: relative;
     display: inline-block;
@@ -333,7 +336,7 @@ table, tr, td{
     padding-bottom: 0.1em;
     overflow: hidden;
   }
-  
+
   .ml6 .letter {
     display: inline-block;
     line-height: 1em;

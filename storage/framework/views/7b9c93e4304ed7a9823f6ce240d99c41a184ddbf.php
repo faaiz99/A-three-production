@@ -35,10 +35,9 @@
                             </div>
                         <?php endif; ?>
                         <?php if(Session::has('fail')): ?>
-                            <div class = "alert alert-success"><?php echo e(Session::get('fail')); ?>
+                            <div class = "alert alert-danger"><?php echo e(Session::get('fail')); ?>
 
                             </div>
-
                         <?php endif; ?>
                         <div class="form-row">
                             <div class="col-lg-7">

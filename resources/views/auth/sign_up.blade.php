@@ -29,14 +29,6 @@
                     <h4>Create Account</h4>
                     <form action="/signin" method="POST">
                         @csrf
-                        @if(Session::has('success'))
-                            <div class = "alert alert-success">{{Session::get('success')}}
-                            </div>
-                        @endif
-                        @if(Session::has('fail'))
-                            <div class = "alert alert-danger">{{Session::get('fail') }}
-                            </div>
-                        @endif
                         <div class="form-row">
                             <div class="col-lg-7">
                                 <label for="first_name"></label>

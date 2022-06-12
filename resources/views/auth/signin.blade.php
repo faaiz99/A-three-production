@@ -29,15 +29,6 @@
                 <div class="col-lg-7 px-5 pt-5">
                     <h4>Sign In</h4>
                     <form action="#" method="POST">
-                        @csrf
-                        @if (Session::has('success'))
-                            <div class="alert alert-success">{{ Session::get('success') }}
-                            </div>
-                        @endif
-                        @if (Session::has('fail'))
-                            <div class="alert alert-danger">{{ Session::get('fail') }}
-                            </div>
-                        @endif
                         <div class="form-row">
                             <div class="col-lg-7">
                                 <label for="email"></label>
@@ -51,12 +42,6 @@
                                     placeholder="Password">
                             </div>
                         </div>
-                        {{-- <div class="form-row ml-4">
-                            <input class="form-check-input"  class="form-control my-3 p-4"type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                              Employee? <a href="user/dep-sign_up.html" style="text-decoration: none;"><br>Employee Registration Click here!</a>
-                            </label>
-                          </div> --}}
                         <div class="form-row">
                             <div class="col-lg-7">
                                 <a href="#"><button type="submit" class="btn1 mt-4 mb-5">Sign In</button></a>

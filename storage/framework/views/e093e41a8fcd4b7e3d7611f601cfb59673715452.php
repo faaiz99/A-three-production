@@ -25,80 +25,93 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 
 </head>
+
 <body>
     <?php $__env->startSection('content'); ?>
-    
-    <div class="col-sm-3 offset-1">
-        <h5>Client's Profile</h5>
-        <h6>First Name: <?php echo e($data->first_name); ?></h6>
-        <h6>Last Name: <?php echo e($data->last_name); ?></h6>
-        <h6>Email: <?php echo e($data->email); ?></h6>
-        <h6>Contact # <?php echo e($data->contact); ?></h6>
+        
+        
+        <?php if(session('status')): ?>
+            <div class="alert alert-success" role="alert">
+                <?php echo e(session('status')); ?>
 
-    </div>
+            </div>
+        <?php endif; ?>
+        <div class="col-sm-3 offset-1">
+            <h5>Client's Profile</h5>
+            <h6>First Name: <?php echo e($data->first_name); ?></h6>
+            <h6>Last Name: <?php echo e($data->last_name); ?></h6>
+            <h6>Email: <?php echo e($data->email); ?></h6>
+            <h6>Contact # <?php echo e($data->contact); ?></h6>
+            <a href="/signin">
+                <h6>logout</h6>
+            </a>
 
-    <section>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-            <div class="offcanvas-header">
-                <h5 id="offcanvasRightLabel">Notifications</h5>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                ...
-            </div>
         </div>
-        <div class="section col-lg-9 col-md-10">
-            <div class="container-1">
-                <h3> <i class="fas fa-tasks me-2"></i>Todo List
-                    <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                        aria-controls="offcanvasRight"> <i class="fa-solid fa-bell"></i> 123</button>
-                </h3>
+
+        <section>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <h5 id="offcanvasRightLabel">Notifications</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    ...
+                </div>
             </div>
-            <div class="container-2 table-responsive-sm"></div>
-            <table class="my-3 table-sm" id="todoTable">
-                <thead>
-                    <tr style="border-bottom: 1px solid rgb(214, 206, 206);">
-                        <th>Task Type</th>
-                        <th>Task</th>
-                        <th>Priority</th>
-                        <th>Actions</th>
-                        <th>Due Date</th>
-                    </tr>
-                </thead>
+            <div class="section col-lg-9 col-md-10">
+                <div class="container-1">
+                    <h3> <i class="fas fa-tasks me-2"></i>Todo List
+                        <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"> <i
+                                class="fa-solid fa-bell"></i> 123</button>
+                    </h3>
+                </div>
+                <div class="container-2 table-responsive-sm"></div>
+                <table class="my-3 table-sm" id="todoTable">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgb(214, 206, 206);">
+                            <th>Task Type</th>
+                            <th>Task</th>
+                            <th>Priority</th>
+                            <th>Actions</th>
+                            <th>Due Date</th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                </tbody>
-            </table>
+                    <tbody>
+                    </tbody>
+                </table>
 
-            <br>
-            <div class="col-sm-5 text-center" style="padding: 10px;">
-                <h4 class="text-center">Add Task</h4>
-                <form action="" id="addTask">
-                    <label for="members" style="display: block;">Task Type:</label>
-                    <select name="members" id="members" required>
-                        <option value="Photography">Photography</option>
-                        <option value="Videophragy">Videography</option>
-                        <option value="Drone Shot">Drone Shot</option>
-                        <option value="Album">Album</option>
-                    </select>
-                    <label for="priority" style="display: block;">Task Priority</label>
-                    <select name="priority" id="priority" required>
-                        <option value="low">low</option>
-                        <option value="middle">middle</option>
-                        <option value="high">high</option>
-                    </select>
-                    <label for="completion-date" style="display: block;">Date</label>
-                    <input type="date" name="completionDate" id="completionDate" required>
-                    <label for="taskDescription" style="display: block;">Task Details</label>
-                    <textarea name="taskDescription" id="" cols="30" rows="5" required></textarea>
-                </form>
                 <br>
-                <button class="btn btn-danger" onclick="resetList()">Cancel</button>
-                <button class="btn btn-success" onclick="addItem();">Add Task</button>
+                <div class="col-sm-5 text-center" style="padding: 10px;">
+                    <h4 class="text-center">Add Task</h4>
+                    <form action="" id="addTask">
+                        <label for="members" style="display: block;">Task Type:</label>
+                        <select name="members" id="members" required>
+                            <option value="Photography">Photography</option>
+                            <option value="Videophragy">Videography</option>
+                            <option value="Drone Shot">Drone Shot</option>
+                            <option value="Album">Album</option>
+                        </select>
+                        <label for="priority" style="display: block;">Task Priority</label>
+                        <select name="priority" id="priority" required>
+                            <option value="low">low</option>
+                            <option value="middle">middle</option>
+                            <option value="high">high</option>
+                        </select>
+                        <label for="completion-date" style="display: block;">Date</label>
+                        <input type="date" name="completionDate" id="completionDate" required>
+                        <label for="taskDescription" style="display: block;">Task Details</label>
+                        <textarea name="taskDescription" id="" cols="30" rows="5" required></textarea>
+                    </form>
+                    <br>
+                    <button class="btn btn-danger" onclick="resetList()">Cancel</button>
+                    <button class="btn btn-success" onclick="addItem();">Add Task</button>
+                </div>
             </div>
-        </div>
-    </section>
-   <?php $__env->stopSection(); ?>
+        </section>
+    <?php $__env->stopSection(); ?>
     <script>
         function resetList() {
             document.getElementById('addTask').reset();
@@ -193,7 +206,7 @@
                 el = el.parentNode
 
             }
-           el.style.textDecoration = "line-through";
+            el.style.textDecoration = "line-through";
         }
 
         var textWrapper = document.querySelector('.ml6 .letters');
@@ -217,6 +230,7 @@
             });
     </script>
 </body>
+
 </html>
 
 <?php echo $__env->make('layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\faaiz\athree\resources\views/auth/client.blade.php ENDPATH**/ ?>

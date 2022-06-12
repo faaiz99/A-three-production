@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
 </head>
 <body>
     <div style="padding: 0%;" class="container-fluid banner">
         <div class="row">
-            <nav class="navbar navbar-expand-xl navbar-dark">
+            <nav class="navbar navbar-expand-xl navbar-dark ">
                 <a class="navbar-brand" style="color:white;" href="/">Athree Production</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
                     <span class="navbar-toggler-icon"></span>
@@ -32,10 +31,7 @@
                             <a class="nav-link" href="/contact">Contact</a>
                         </li>
                         <li class="nav-item">
-                                <a class="nav-link" href="/signin">Login</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="/signin">Logout</a>
+                                <a class="nav-link" href="/login">Login</a>
                         </li>
                     </ul>
                 </div>
@@ -45,9 +41,9 @@
     @yield('content')
     <section class=" footer position-relative ">
         <div class="">
-            <footer class="text-white text-center text-lg-start" style="background-color: #774181;">
-                <div class="container p-4">
-                    <div class="row mt-4">
+            <footer class="text-white text-center text-lg-start" style="background-color: #352961">
+                <div class="container p-2">
+                    <div class="row mt-1">
                         <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
                             <h5 class="text-uppercase mb-4">About company</h5>
 
@@ -61,7 +57,7 @@
                                 molestias.
                             </p>
 
-                            <div class="mt-4">
+                            <div class="mt-2">
                                 <a type="button" class="btn btn-floating btn-light btn-lg"><i
                                         class="fa fa-facebook-f"></i></a>
                                 <a type="button" class="btn btn-floating btn-light btn-lg"><i
@@ -81,15 +77,15 @@
                             </div>
 
                             <ul class="fa-ul" style="margin-left: 1.65em;">
-                                <li class="mb-3">
+                                <li class="mb-1">
                                     <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">Islamabad,
                                         Pakistan</span>
                                 </li>
-                                <li class="mb-3">
+                                <li class="mb-1">
                                     <span class="fa-li"><i class="fas fa-envelope"></i></span><span
                                         class="ms-2">contact@athreeproductions.com</span>
                                 </li>
-                                <li class="mb-3">
+                                <li class="mb-1">
                                     <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+
                                         090078601</span>
                                 </li>
@@ -117,7 +113,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="text-center p-3" style="background-color: #774181">
+                <div class="text-center" style="background-color: #352961">
                     © 2022 Copyright:
                     <a class="text-white" href="#">Mifra & Faaiz</a>
                 </div>

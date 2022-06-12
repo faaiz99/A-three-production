@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\serviceController;
 use App\Http\Controllers\orderController;
-use App\Http\Controllers\customAuthController;
 use App\Http\Controllers\contactController;
-
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,35 +17,37 @@ use App\Http\Controllers\contactController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//  Route::get('/','App\Http\Controllers\listingController@index');
-
 
 Route::get('/', function () { return view('index');});
 Route::get('/about', function () { return view('about');});
 Route::get('/gallery', function(){return view('gallery');});
 Route::get('/quotation', function(){return view('quotation');});
 Route::get('/contact', function(){return view('contact');});
-// Route::get('/services', function(){return view('services');});
-// Route::get('/sign_up', function(){return view('sign_up');});
-// Route::get('/signin', function(){return view('signin');});
-
 Route::get('/services',[serviceController::class,'index']);
+
 Route::get('/quotation/{id}', [serviceController::class, 'payment']);
 Route::post('/quotation/{id}', [orderController::class, 'store']);
-Route::get('/signin', [customAuthController::class, 'login'])->middleware('alreadyLoggedIn');
-Route::get('/sign_up',[customAuthController::class,'registration'])->middleware('alreadyLoggedIn');
-// Route::post('/signin', [customAuthController::class, 'registerClient']);
-// Route::post('/signin', [customAuthController::class, 'login']);
-Route::post('/signin', [customAuthController::class,'loginClient']);
-Route::get('/client',[customAuthController::class,'dashboard'])->middleware('isLoggedIn');
+
 Route::post('/contact',[contactController::class,'sendMail']);
-Route::get('/logout',[customAuthController::class, 'logout']);
+
+
+Route::middleware(['auth', 'userAccess:user'])->group(function () {
+
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/delete/{id}',[App\Http\Controllers\HomeController::class, 'delete']);
+    Route::post('/update/{id}',[App\Http\Controllers\HomeController::class, 'update']);
+});
+
+Route::middleware(['auth', 'userAccess:admin'])->group(function () {
+  
+    Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home');
+    Route::get('/admin/delete/{id}',[App\Http\Controllers\HomeController::class, 'delete']);
+    Route::post('/admin/update/{id}',[App\Http\Controllers\HomeController::class, 'update']);
+});
+Auth::routes();
 
 
 
-
-
-
-
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 

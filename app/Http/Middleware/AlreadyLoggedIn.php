@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Middleware;
-
 use Closure;
 use Illuminate\Http\Request;
 
@@ -16,8 +14,9 @@ class AlreadyLoggedIn
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Session()->has('loginId')&& (url('signin')==$request->url()|| url('sign_up')==$request->url()))
+        if(Session()->has('loginId') && (url('signin')==$request->url() || url('sign_up')==$request->url())){
+            return back()->with('success','You are already logged In');
+        }
         return $next($request);
-        return back();
     }
 }
