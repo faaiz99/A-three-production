@@ -4,20 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services</title>
-    <link rel="stylesheet" href="style.css">
-    <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;700;800&family=Open+Sans&display=swap"
-    rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-
+    <script src="https://kit.fontawesome.com/d7b7127037.js" crossorigin="anonymous"></script>
+    <title>Services</title>
   </head>
 <body>
 @section('content')
@@ -26,7 +23,6 @@
     <div class="row justify-content-center">
       <div class="col-md-4">
         <div class="card text-black">
-          <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
           <img src="images/weddingcard.jpg"
             class="card-img-top" alt="Apple Computer" />
           <div class="card-body">
@@ -58,7 +54,6 @@
       </div>
       <div class="col-md-4">
         <div class="card text-black">
-          <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
           <img src="images/productcard.jpg"
             class="card-img-top" alt="Apple Computer" />
           <div class="card-body">
@@ -90,7 +85,6 @@
       </div>
       <div class="col-md-4">
         <div class="card text-black">
-          <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
           <img src="images/naturecard.jpg"
             class="card-img-top" alt="Apple Computer" />
           <div class="card-body">
@@ -126,7 +120,6 @@
     <div class="row justify-content-center">
       <div class="col-md-4">
         <div class="card text-black">
-          <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
           <img src="images/dinner.jpg"
             class="card-img-top" alt="Apple Computer" />
           <div class="card-body">
@@ -158,7 +151,6 @@
       </div>
       <div class="col-md-4">
         <div class="card text-black">
-          <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
           <img src="images/videocard.jpg"
             class="card-img-top" alt="Apple Computer" />
           <div class="card-body">
@@ -190,7 +182,6 @@
       </div>
       <div class="col-md-4">
         <div class="card text-black">
-          <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
           <img src="images/birthdaycard.jpg"
             class="card-img-top" alt="Apple Computer" />
           <div class="card-body">
@@ -222,7 +213,6 @@
       </div>
       <div class="col-md-4">
         <div class="card text-black">
-          <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
           <img src="images/dronecard.jpg"
             class="card-img-top" alt="Apple Computer" />
           <div class="card-body">

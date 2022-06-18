@@ -17,11 +17,15 @@
 <title>Register</title>
 
 @section('content')
-<div class="container">
+<div class="container mt-5 mb-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+        <div class="col-md-8" style="background-color:white;">
+            <div class="card" style=" border-radius: 30px;
+            box-shadow: 12px 12px 22px #c6a2a2;" >
+                <div class="col-12">
+                    <img class="image" src="images/signup1.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="card-header" style="background-color:white; " ><h4>Register</h4></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -79,7 +83,22 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn1" style=".btn1{
+                                    border: none;
+                                    outline: none;
+                                    height: 50px;
+                                    width: 100%;
+                                    background-color: #774181;
+                                    color: white;
+                                    border-radius: 4px;
+                                    font-weight: bold;
+                                    font-size: 1em;
+
+                                }
+                                .btn1:hover{
+                                    background-color: #8f6497;
+                                    font-size: 1.10em ;
+                                }">
                                     {{ __('Register') }}
                                 </button>
                             </div>

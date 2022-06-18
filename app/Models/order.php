@@ -14,7 +14,7 @@ class order extends Model
         'card_holder',
         'credit_card_number',
         'title',
-        'price'
+        'price',
     ];
     public $timestamps = false;
 }

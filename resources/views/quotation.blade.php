@@ -7,38 +7,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
     <link rel="stylesheet" href="style.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;700;800&family=Open+Sans&display=swap"
         rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 
 </head>
 
 <body>
     @section('content')
+        <section class="data-table">
+            <div class="row mb-4">
+
+                <div class="col-lg-8 mx-auto text-center">
+
+                        <h3 class="display-6">Pick a date</h3>
+                </div>
+            </div> <!-- End -->
+
+        </section>
+
         <section>
             <div class="container py-5">
+                @if (Session::has('success'))
+                <div class="alert alert-success">{{ Session::get('success') }}
+                </div>
+            @endif
+            @if (Session::has('fail'))
+                <div class="alert alert-success">{{ Session::get('fail') }}
+                </div>
+            @endif
                 <div class="row mb-4">
+
                     <div class="col-lg-8 mx-auto text-center">
-                        @if (Session::has('success'))
-                            <div class="alert alert-success">{{ Session::get('success') }}
-                            </div>
-                        @endif
-                        @if (Session::has('fail'))
-                            <div class="alert alert-success">{{ Session::get('fail') }}
-                            </div>
-                        @endif
-                            <h1 class="display-3">Payment Form</h1>
+
+                            <h3 class="display-6">Payment Form</h3>
                     </div>
                 </div> <!-- End -->
                 <div class="row">
@@ -63,16 +71,27 @@
                                     <!-- credit card info-->
                                     <div id="credit-card" class="tab-pane fade show active pt-3">
                                         {{-- onsubmit="event.preventDefault()" --}}
-                                        <form role="form" method="POST" action="/">
+                                        <form role="form" method="POST" action="/quotation/{id}">
                                             @csrf
                                             <h6>Service</h6><input type="text" value={{ $payment->title}} name="title" readonly style = "border:none">
                                             <h6>Total $:</h6><input type="text" value={{ $payment->price }} name="price" readonly  style = "border:none">
-                                            {{-- <h5 class="display-10">Selected service:</h5>
-                                            <h5 class="display-10">Total: ${{ $payment->price }}</h5> --}}
                                             <div class="form-group"> <label for="username">
                                                     <h6>Card Owner</h6>
-                                                </label> <input type="text" name="username" placeholder="Card Owner Name"
-                                                    required class="form-control " pattern="[a-zA-Z]([0-9a-zA-Z]){2,10}">
+
+                                                </label>
+                                                @if (Auth::check())
+                                                    <input type="text" name="username" placeholder="Card Owner Name"
+
+                                                    required class="form-control " value={{ Auth::user()->name }} pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$">
+
+
+                                                @else
+                                                    <input type="text" name="username" placeholder="Card Owner Name"
+
+                                                    required class="form-control " pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$">
+
+                                                @endif
+
                                             </div>
                                             <div class="form-group"> <label for="cardNumber">
                                                     <h6>Card number</h6>
@@ -108,6 +127,7 @@
                                             <div class="card-footer"> <button type="submit"
                                                     class="subscribe btn btn-primary btn-block shadow-sm"> Confirm Payment
                                                 </button>
+
                                         </form>
                                     </div>
                                 </div> <!-- End -->

@@ -156,8 +156,9 @@
 
 .navbar1{
     background-color: #352961;
-    width: 100%;
-    height: 650px;
+    width: 70%;
+    height: 100vh;
+    margin-left: -30px;
 }
 
 .navbar1 h3{
@@ -341,3 +342,6 @@ table, tr, td{
     display: inline-block;
     line-height: 1em;
   }
+  .div.col-lg-4.col-md-12.mb-4.mb-md-0 p {
+    font-size: 10px;
+}

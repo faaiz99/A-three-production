@@ -8,24 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    {{-- <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;700;800&family=Open+Sans&display=swap"
-        rel="stylesheet"> --}}
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-
-    {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
-
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>
     <script src="https://kit.fontawesome.com/d7b7127037.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-    <title>Home</title>
+    <title>Welcome</title>
 </head>
 
 <body>
@@ -34,14 +28,24 @@
             <div class="alert alert-success">{{ Session::get('success') }}
             </div>
         @endif
+
             <!-- Background image -->
             <div class="bg-image d-flex justify-content-center align-items-center img-fluid" style="
           height: 100vh;
           background-size: cover;
           background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(images/dslr.jpg);">
                 <h1 class="cover-text text-white text-capitalize ml6"><span class="text-wrapper"><span
-                            class="letters">Athree Productions</span></span> </h1>
+                            class="letters">Athree Productions</span></span>
+                            </h1>
+
             </div>
+            <div>
+                @if (Session::has('fail'))
+                <div class="alert alert-warning">{{ Session::get('fail') }}
+                </div>
+                @endif
+            </div>
+
             <script>
                 var textWrapper = document.querySelector('.ml6 .letters');
                 textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
@@ -65,6 +69,7 @@
             </script>
             <!-- Background image -->
             <section class="container-fluid">
+
                 <div class="col-12"> <br></div>
                 <div class="row justify-content-center">
                     <hr>
@@ -85,9 +90,6 @@
                         </div>
                         <hr>
                     </div>
-
-                </div>
-                <div class="row-sec">
                 </div>
                 <div class="row-sec">
                     <div class="col text-center">
@@ -187,14 +189,6 @@
                     </div>
                 </div>
             </section>
-            {{-- <h2>Hello</h2>
-        @foreach ($listing as $item)
-        {{ $item['id']}}
-        {{ $item['title'] }}
-        {{ $item['tags'] }}
-
-        @endforeach --}}
         @endsection
 </body>
-
 </html>

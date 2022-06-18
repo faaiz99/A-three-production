@@ -7,21 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;700;800&family=Open+Sans&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/d7b7127037.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     <title>About</title>
 </head>
 <body>
 @section('content')
-<div class="container-fluid">
+@if (Session::has('fail'))
+<div class="alert alert-warning">{{ Session::get('fail') }}
+</div>
+@endif
+<div class="container-fluid mt-5" style="background-color: #f6e5e5;">
     <div class="row">
         <div class="jumbotron col-lg-6" style="background-color: #f6e5e5; height: auto;">
             <h3 class="font-weight-light "><i class="fa-solid fa-people-group"></i>About us</h3>
@@ -41,11 +42,11 @@
         </div>
     </div>
 <hr>
-    <div class="row text-center justify-content-center" >
-        <h3>Our team</h3>
+    <div class="row text-center justify-content-center mb-5" >
+        <h3> <i class="fa-solid fa-people-line"></i> Our team</h3>
     </div>
     <hr>
-    <div class="row marketing">
+    <div class="row marketing text-center justify-content-center mb-5">
       <div class="col-lg-6">
         <h4>Founder & CEO</h4>
         <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
@@ -67,7 +68,6 @@
         <h4>Drone Operator</h4>
         <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
       </div>
-      <p><a class="btn btn-lg btn-success" href="#" role="button">Get Hired</a></p>
       <hr>
     </div>
 @endsection

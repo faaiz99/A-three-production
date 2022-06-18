@@ -3,18 +3,17 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-        <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;700;800&family=Open+Sans&display=swap"
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="<?php echo e(asset('style.css')); ?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
-        <script src="https://kit.fontawesome.com/1b1d865aa5.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/d7b7127037.js" crossorigin="anonymous"></script>
         <title>Contact</title>
     </head>
 <body>
@@ -25,6 +24,16 @@
                 <div class="card-body" style="background: #f6e5e5;">
                     <div class="card-body" style="background: #f6e5e5;" >
                     <h1 class="font-weight-light text-center py-3">Contact Us</h1>
+                    <?php if(Session::has('success')): ?>
+                    <div class="alert alert-success"><?php echo e(Session::get('success')); ?>
+
+                    </div>
+                <?php endif; ?>
+                <?php if(Session::has('fail')): ?>
+                    <div class="alert alert-success"><?php echo e(Session::get('fail')); ?>
+
+                    </div>
+                <?php endif; ?>
                     <div class="row pt-3">
                         <div class="col-lg-6 col-md-12 col-sm-12 col-12">
                             <div class="row">
@@ -59,22 +68,21 @@
                                 <div class="form-row">
                                     <div class="form-group col-lg-6 col-md-12 col-sm-12 col-12">
                                         <label for="first_name">First Name</label>
-                                        <input type="text" name = "first_name" class="form-control" placeholder="First Name" required  pattern="[a-zA-Z]([0-9a-zA-Z]){2,10}">
+                                        <input type="text" name = "first_name" class="form-control" placeholder="First Name" required  pattern="[a-zA-Z]([0-9a-zA-Z]){4,30}" min="4" max="30" title="Min 4 Max 30 Chars No Spaces No Special Charachters e.g faaiz">
                                     </div>
                                     <div class="form-group col-lg-6 col-md-12 col-sm-12 col-12">
                                         <label for="last_name">Last Name</label>
-                                        <input type="text" name = "last_name" class="form-control" placeholder="Last Name" required pattern="[a-zA-Z]([0-9a-zA-Z]){2,10}">
+                                        <input type="text" name = "last_name" class="form-control" placeholder="Last Name" required pattern="[a-zA-Z]([0-9a-zA-Z]){4,30}" min="4" max="30" title="Min 4 Max 30 Chars No Spaces No Special Charachters">
                                     </div>
                                     <div class="form-group col-lg-6 col-md-12 col-sm-12 col-12">
                                         <label for="subject">Subject</label>
-                                        <input type="text" name = "subject" class="form-control" placeholder="Subject" required pattern="[a-zA-Z]{2,40}">
+                                        <input type="text" name = "subject" class="form-control" placeholder="Subject" required pattern = '[a-zA-Z]([0-9a-zA-Z]){4,50}' min="5" max="50" title="Max Length exceeded of 50 chars and Single Word Subject e.g wedding">
                                     </div>
                                 </div>
                                 <label for="email">Email</label>
-                                        <input type="text" name ="email" class="form-control" placeholder="Email" required pattern="([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]){2,7}">
+                                        <input type="text" name ="email" class="form-control" placeholder="Email" required pattern="([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]){2,7}" title="Only . allowed no Spaces no special characters">
                                 <label for="message">Your Mesaage</label>
-                                <textarea name ="message" class="form-control mb-3" placeholder="Type Here" id="" cols="10" rows="5" required></textarea>
-                                
+                                <textarea name ="message" class="form-control mb-3" placeholder="Type Here" id="" cols="10" rows="5" required min="5" max ="5000" title="Message cannot be empty"></textarea>
                                 <button type = "submit"class="btn btn-success float-right">Send Message</button>
                             </form>
                         </div>

@@ -7,8 +7,9 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
-
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -42,20 +43,32 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
     public function login(Request $request)
-    {   
+    {
         $input = $request->all();
-     
+
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
-            if (auth()->user()->type == 'admin') {
-                return redirect()->route('admin.home');
+            if (auth()->user()->type == 'admin' || auth()->user()->type == 1) {
+                return redirect('admin/home');
+                // ->route('admin.home');
             }else{
                 return redirect()->route('home');
             }
-        }else{
-            return redirect()->route('login')
-                ->with('error','Email-Address And Password Are Wrong.');
         }
-          
+        else{
+
+
+            $email = DB::table('users')
+            ->select('email')
+            ->where('email','=', $input['email'])
+            ->get();
+            if($email == true){
+                return redirect()->route('login')->with('error','Password is Wrong.');
+            }
+            else if($email == false){
+                return redirect()->route('login')->with('error','Email not found in database');
+            }
+        }
+
     }
 }

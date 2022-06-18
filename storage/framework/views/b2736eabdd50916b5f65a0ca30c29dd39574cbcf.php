@@ -31,7 +31,10 @@
                             <a class="nav-link" href="/contact">Contact</a>
                         </li>
                         <li class="nav-item">
+
+
                                 <a class="nav-link" href="/login">Login</a>
+
                         </li>
                     </ul>
                 </div>
@@ -44,20 +47,20 @@
             <footer class="text-white text-center text-lg-start" style="background-color: #352961">
                 <div class="container p-2">
                     <div class="row mt-1">
-                        <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
-                            <h5 class="text-uppercase mb-4">About company</h5>
+                        <div class="col-lg-4 col-md-12 mb-4 mb-md-0 text-center">
+                            <h6 class="text-uppercase mb-4">About company</h6>
 
-                            <p>
+                            <p style="font-size: 10px;">
                                 At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
                                 voluptatum deleniti atque corrupti.
-                            </p>
+                            </p >
 
-                            <p>
+                            <p style="font-size: 10px;">
                                 Blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas
                                 molestias.
                             </p>
 
-                            <div class="mt-2">
+                            <div class="mt-2" style="font-size: 10px;">
                                 <a type="button" class="btn btn-floating btn-light btn-lg"><i
                                         class="fa fa-facebook-f"></i></a>
                                 <a type="button" class="btn btn-floating btn-light btn-lg"><i
@@ -68,15 +71,12 @@
                                         class="fa-brands fa-google-plus-g"></i></a>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                            <h5 class="text-uppercase mb-4 pb-1">Search something</h5>
+                        <div class="col-lg-4 col-md-6 mb-4 mb-md-0 text-center">
+                            <h6 class="text-uppercase mb-4 pb-1 text-center">Our Address</h6>
 
-                            <div class="form-outline form-white mb-4">
-                                <input type="text" id="formControlLg" class="form-control form-control-lg" />
-                                <label class="form-label" for="formControlLg">Search</label>
-                            </div>
+                            
 
-                            <ul class="fa-ul" style="margin-left: 1.65em;">
+                            <ul class="fa-ul" style="margin-left: 1.65em; font-size: 10px;">
                                 <li class="mb-1">
                                     <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">Islamabad,
                                         Pakistan</span>
@@ -91,10 +91,10 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                            <h5 class="text-uppercase mb-4">Opening hours</h5>
+                        <div class="col-lg-4 col-md-6 mb-4 mb-md-0 text-center">
+                            <h6 class="text-uppercase mb-4">Opening hours</h6>
 
-                            <table class="table text-center text-white">
+                            <table class="table text-center text-white" style="font-size: 10px;">
                                 <tbody class="fw-normal">
                                     <tr>
                                         <td>Mon - Thu:</td>
@@ -113,9 +113,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="text-center" style="background-color: #352961">
+                <div class="text-center" style="background-color: #352961; font-size: 10px;">
                     © 2022 Copyright:
-                    <a class="text-white" href="#">Mifra & Faaiz</a>
+                    <a class="text-white" href="#" style="font-size: 10px;">Mifra & Faaiz</a>
                 </div>
             </footer>
         </div>

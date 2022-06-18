@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('task', function (Blueprint $table) {
             $table->id();
+            $table->integer('clientId');
             $table->string('client');
             $table->date('date');
             $table->string('priority');

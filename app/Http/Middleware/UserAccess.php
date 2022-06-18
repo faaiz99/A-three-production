@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserAccess
 {
@@ -17,11 +19,19 @@ class UserAccess
     public function handle(Request $request, Closure $next, $userType)
     {
         if(auth()->user()->type == $userType){
+
             return $next($request);
         }
-          
-        return response()->json(['You do not have permission to access for this page.']);
-        
-        return $next($request);
+        // return redirect('/home')->with('fail','Please loggout first');
+        if(Auth::check()){
+            if(Auth::user()->type == 'user')
+                return redirect('/home');
+            else
+                return redirect('/admin/home');
+
+        }
+           // return response()->json(['You do not have permission to access for this page. Please loggout']);
+
+         return $next($request);
     }
 }

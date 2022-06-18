@@ -2,29 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use mail;
 use Illuminate\Http\Request;
+use App\Models\contact;
 
 class contactController extends Controller
 {
-    public function sendMail(Request $request){
-
-
-
-        $to = 'faaizaslam106@gmail.com';
-        $subject = $request->subject;
-
-        $message = $request->message;
-
-        $header = "From".$request->email."\r\n";
-
-        $retval = mail ($to,$subject,$message,$header);
-
-        if( $retval == true ) {
-           echo "Message sent successfully...";
-        }else {
-           echo "Message could not be sent...";
-        }
-
+    function sendMessage(Request $req){
+        $message = new contact;
+        $message->first_name = $req->first_name;
+        $message->last_name = $req->last_name;
+        $message->subject = $req->subject;
+        $message->email = $req->email;
+        $message->message = $req->message;
+        $message->save();
+        return redirect('/contact')->with('success', 'Message succesfully sent');
     }
 }

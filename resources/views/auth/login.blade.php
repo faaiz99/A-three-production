@@ -29,8 +29,12 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-                        @if (Session::has('Success'))
-                        <div class="alert alert-success">{{ Session::get('Success') }}
+                        @if (Session::has('error'))
+                        <div class="alert alert-warning">{{ Session::get('error') }}
+                        </div>
+                        @endif
+                        @if (Session::has('login'))
+                        <div class="alert alert-warning">{{ Session::get('login') }}
                         </div>
                         @endif
 
@@ -38,7 +42,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" patten ="/^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\. [a-zA-Z0-9-]+)*$/" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -71,7 +75,6 @@
                                         {{ __('Remember Me') }}
                                     </label>
                                     <br>
-
                                 </div>
                             </div>
                         </div>
@@ -103,10 +106,9 @@
                                 @endif
                             </div>
                         </div>
-
                         <div class="row mb-0">
                             <div class="col-md-8 offset-sm-2">
-                                <button type="submit" class="btn1" style=".btn1{
+                                <button type="button" class="btn1" style=".btn1{
                                     border: none;
                                     outline: none;
                                     height: 50px;

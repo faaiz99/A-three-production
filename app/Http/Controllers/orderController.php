@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\order;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
 
 
 class orderController extends Controller
@@ -36,16 +41,47 @@ class orderController extends Controller
      */
     public function store(Request $request)
     {
-         $order = new order;
-         $order->card_holder = $request->input('username');
-         $order->title = $request->input('title');
-         $order->price = $request->input('price');
-         $order->credit_card_number = $request->input('cardNumber');
-         $res = $order->save();
-         if($res)
-         return back()->with('success','Payment succesfully transfered');
-        else
-         return back()->with('fail','Something went wrong'); 
+        if(Auth::check()){
+            $order = new order;
+            $order->card_holder = $request->input('username');
+            $order->title = $request->input('title');
+            $order->price = $request->input('price');
+            $order->credit_card_number = $request->input('cardNumber');
+
+            $orderId = DB::table('orders')
+            ->select('id')
+            ->where('card_holder','=',Auth::user()->name)
+            ->get()->first();
+
+
+            $res = $order->save();
+
+            $user = new User;
+            $user->id = Auth::user()->id;
+            $user->name = Auth::user()->name;
+            $user->email = Auth::user()->email;
+            $user->orderId = $orderId->id;
+
+            $user->password = Hash::make(Auth::user()->password);
+
+            if(Auth::user()->type =='admin' || Auth::user()->type == 1)
+                $user->type = 1;
+            else if(Auth::user()->type =='user' || Auth::user()->type == 0)
+                $user->type = 0;
+
+            $findCurrent = User::find(Auth::user()->id);
+            $findCurrent->delete();
+            $user->save();
+
+            if($res && $user && $findCurrent)
+             return back()->with('success','Payment succesfully transfered');
+            else
+             return back()->with('fail','Something went wrong');
+        }
+        else{
+            return redirect('/login')->with('login', "Please Login first");
+        }
+
     }
 
     /**
