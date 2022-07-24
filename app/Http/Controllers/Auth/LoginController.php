@@ -44,10 +44,18 @@ class LoginController extends Controller
     }
     public function login(Request $request)
     {
+
         $input = $request->all();
+        $remember_me = false;
+
+
+
+        if(isset($request->remember))
+            $remember_me = true;
 
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
+
             if (auth()->user()->type == 'admin' || auth()->user()->type == 1) {
                 return redirect('admin/home');
                 // ->route('admin.home');
@@ -56,8 +64,6 @@ class LoginController extends Controller
             }
         }
         else{
-
-
             $email = DB::table('users')
             ->select('email')
             ->where('email','=', $input['email'])
@@ -66,7 +72,7 @@ class LoginController extends Controller
                 return redirect()->route('login')->with('error','Password is Wrong.');
             }
             else if($email == false){
-                return redirect()->route('login')->with('error','Email not found in database');
+                return redirect()->route('login')->with('error','Email not registered');
             }
         }
 

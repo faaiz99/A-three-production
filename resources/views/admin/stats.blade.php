@@ -19,62 +19,11 @@
     <section>
             <div class="row">
                 <div class="col-lg-3 col-md-2 col-sm-12">
-                    <nav class="navbar1 navbar-expand-xl bg-dark">
-                        <div class="sidebar-header">
-                            <h3></h3>
-                        </div>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div id="navbar1" class="navbar-collapse collapse ml-5">
-                            <ul class="navbar-nav list-unstyled">
-                                <p><a href="/admin/home" style="text-decoration:none;">Dashboard</a> </p>
-                                <li>
-                                    <a style="text-decoration:none;" href="/admin/home">Home</a>
-                                </li>
-                                <li> <a href="/admin/orders" style="text-decoration:none;">Orders</a> </li>
-                                <li>
-                                    <a style="text-decoration:none;" href="/admin/stats">Statistics</a>
-                                <li>
-                                <li>
-                                    <a style="text-decoration:none;" href="/admin/users">Users</a>
-                                <li>
-                                <li>
-                                    <a href="/admin/update" style="text-decoration:none;"> Profile</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                    <div class="offcanvas offcanvas-start bg-dark" style=" color:white;width: 30%;" id="demo">
-                        <div class="offcanvas-header">
-                            <h1 class="offcanvas-title  bg-dark"></h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-                        </div>
-                        <div class="offcanvas-body bg-dark">
-                            <ul class="navbar-nav list-unstyled components ml-2">
-                                <p><a href="/admin/home" style="text-decoration:none;">Dashboard</a> </p>
-                                <li>
-                                    <a style="text-decoration:none;" href="/admin/home">Home</a>
-                                </li>
-                                <li> <a href="/admin/orders" style="text-decoration:none;">Orders</a> </li>
-                                <li>
-                                    <a style="text-decoration:none;" href="/admin/stats">Statistics</a>
-                                <li>
-                                <li>
-                                    <a style="text-decoration:none;" href="/admin/users">Users</a>
-                                <li>
-                                <li>
-                                    <a href="/admin/update" style="text-decoration:none;"> Profile</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
 
-                    <div class="container-fluid mt-3 mb-1">
-                        <button class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
-                            <i class="fa-solid fa-bars "></i>
-                        </button>
-                    </div>
+                    @include('admin.sidebar');
+
+
+
                 </div>
                 <div class="col-lg-9 col-md-10">
                     <h2 class="text-center mb-5 mt-5">Projects Generated</h2>
@@ -125,10 +74,10 @@
                         ?>
 
                         <div class="col-lg-3 col-md-3">
-                            <div class="card border border-primary shadow-0 mb-4" >
+                            <div class="card border border-primary shadow-0 mb-4 bg-dark" >
                                 <div class="card-body">
-                                    <h5 class="card-title">Wedding Shoots</h5>
-                                    <p class="card-text">
+                                    <h5 class="card-title"  style="color:white">Wedding Shoots</h5>
+                                    <p class="card-text"  style="color:white">
                                         @php
                                         echo $wedding;
                                         @endphp
@@ -138,10 +87,10 @@
                         </div>
 
                         <div class="col-lg-3 col-md-3">
-                            <div class="card border border-primary shadow-0 mb-4">
+                            <div class="card border border-primary shadow-0 mb-4 bg-dark">
                                 <div class="card-body">
-                                    <h5 class="card-title">Drone Shoots</h5>
-                                    <p class="card-text">
+                                    <h5 class="card-title"  style="color:white">Drone Shoots</h5>
+                                    <p class="card-text"  style="color:white">
                                         @php
                                         echo $drone;
                                         @endphp
@@ -152,10 +101,10 @@
                         </div>
 
                         <div class="col-lg-3 col-md-3">
-                            <div class="card border border-primary shadow-0 mb-4">
+                            <div class="card border border-primary shadow-0 mb-4 bg-dark">
                                 <div class="card-body">
-                                    <h5 class="card-title">Nature Shoots</h5>
-                                    <p class="card-text">
+                                    <h5 class="card-title"  style="color:white">Nature Shoots</h5>
+                                    <p class="card-text"  style="color:white">
                                         @php
                                         echo $nature;
                                         @endphp
@@ -169,10 +118,10 @@
                     <div class="row mt-5 text-center">
 
                         <div class="col-lg-3 col-md-3">
-                            <div class="card border border-primary shadow-0 mb-4">
+                            <div class="card border border-primary shadow-0 mb-4 bg-dark">
                                 <div class="card-body">
-                                    <h5 class="card-title">Birthday Shoots</h5>
-                                    <p class="card-text">
+                                    <h5 class="card-title"  style="color:white">Birthday Shoots</h5>
+                                    <p class="card-text"  style="color:white">
                                         @php
                                         echo $birthday;
                                         @endphp
@@ -183,10 +132,10 @@
                         </div>
 
                         <div class="col-lg-3 col-md-3">
-                            <div class="card border border-primary shadow-0 mb-4">
+                            <div class="card border border-primary shadow-0 mb-4 bg-dark">
                                 <div class="card-body">
-                                    <h5 class="card-title">Event Shoots</h5>
-                                    <p class="card-text">
+                                    <h5 class="card-title"c style="color:white">Event Shoots</h5>
+                                    <p class="card-text"  style="color:white">
                                         @php
                                         echo $event;
                                         @endphp
@@ -196,10 +145,10 @@
                         </div>
 
                         <div class="col-lg-3 col-md-3">
-                            <div class="card border border-primary shadow-0 mb-4">
+                            <div class="card border border-primary shadow-0 mb-4 bg-dark">
                                 <div class="card-body">
-                                    <h5 class="card-title">Film Shoots</h5>
-                                    <p class="card-text">
+                                    <h5 class="card-title"  style="color:white">Film Shoots</h5>
+                                    <p class="card-text"  style="color:white">
                                         @php
                                         echo $film;
                                         @endphp
@@ -210,10 +159,10 @@
                     </div>
                     <div class="row mt-5 text-center">
                         <div class="col-lg-3 col-md-3">
-                            <div class="card border border-primary shadow-0 mb-4">
+                            <div class="card border border-primary shadow-0 mb-4 bg-dark">
                                 <div class="card-body">
-                                    <h5 class="card-title">Product Shoots</h5>
-                                    <p class="card-text">
+                                    <h5 class="card-title" style="color:white">Product Shoots</h5>
+                                    <p class="card-text"  style="color:white">
                                         @php
                                         echo $product;
                                         @endphp
@@ -231,5 +180,15 @@
 
 
 </body>
+<script>
+    //  $(document).ready(function(){
+    //             $('.sidebar-item').click("click", function(event){
+    //             event.preventDefault();
+    //             $('.container').load($(this)).attr('href');
+
+    //         });
+    //     });
+
+</script>
 </html>
 

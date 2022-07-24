@@ -25,18 +25,18 @@
                     <img class="image" src="images/signup1.jpg" class="img-fluid" alt="">
                 </div>
                 <div class="card-header"  style="background-color:white; " ><h4>Login</h4></div>
-
+                @if (Session::has('error'))
+                <div class="alert alert-warning">{{ Session::get('error') }}
+                </div>
+                @endif
+                @if (Session::has('login'))
+                <div class="alert alert-warning">{{ Session::get('login') }}
+                </div>
+                @endif
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-                        @if (Session::has('error'))
-                        <div class="alert alert-warning">{{ Session::get('error') }}
-                        </div>
-                        @endif
-                        @if (Session::has('login'))
-                        <div class="alert alert-warning">{{ Session::get('login') }}
-                        </div>
-                        @endif
+
 
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
@@ -66,7 +66,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        {{-- <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -77,7 +77,7 @@
                                     <br>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="row mb-0">
                             <div class="col-md-8 offset-sm-2">
                                 <button type="submit" class="btn1" style=".btn1{

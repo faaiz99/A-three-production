@@ -19,6 +19,8 @@ return new class extends Migration
             $table->longText('credit_card_number');
             $table->string('title');
             $table->double('price');
+            $table->date('date');
+            $table->string('userId');
         });
     }
 

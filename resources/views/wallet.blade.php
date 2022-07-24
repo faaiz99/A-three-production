@@ -9,7 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('style.css') }}">
-    <script src="https://code.jquery.com/jquery-3.6.0.js" ntegrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" ntegrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/d7b7127037.js" crossorigin="anonymous"></script>
 </head>
@@ -37,7 +38,8 @@
                                 <li>
                                     <a style="text-decoration:none;" href="/home">Home</a>
                                 </li>
-                                <li> <a href="/booking/{{ Auth::user()->id }}" style="text-decoration:none;">My bookings</a> </li>
+                                <li> <a href="/booking/{{ Auth::user()->id }}" style="text-decoration:none;">My
+                                        bookings</a> </li>
                                 <li>
                                     <a style="text-decoration:none;" href="/wallet/{{ Auth::user()->id }}">My wallet</a>
                                 <li>
@@ -58,7 +60,8 @@
                                 <li>
                                     <a style="text-decoration:none;" href="/home">Home</a>
                                 </li>
-                                <li> <a href="/booking/ {{ Auth::user()->id }}" style="text-decoration:none;">My bookings</a> </li>
+                                <li> <a href="/booking/ {{ Auth::user()->id }}" style="text-decoration:none;">My
+                                        bookings</a> </li>
                                 <li>
                                     <a style="text-decoration:none;" href="/wallet/{{ Auth::user()->id }}">My wallet</a>
                                 <li>
@@ -77,194 +80,68 @@
 
                 <div class="col-lg-6 col-md-8 mt-5">
 
-                    <br>
+                    <h3>Wallet</h3>
+                    @if (Session::has('Dsuccess'))
+                        <div class="alert alert-success">{{ Session::get('Dsuccess') }}
+                        </div>
+                    @endif
+                    @if (Session::has('Usuccess'))
+                        <div class="alert alert-success">{{ Session::get('Usuccess') }}
+                        </div>
+                    @endif
+                    <div class="container">
+                        <table class="table table-striped table-hover table-responsive-sm" style="border: none;">
+                            <tbody>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Credit Card Number</th>
+                                    <th>Expiration Date</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th>Action</th>
+                                    <th></th>
+                                </tr>
+                                @foreach ($wallet as $card)
+                                    <tr>
+                                        <form action="/wallet/{{ Auth::user()->id }}" method="POST">
+                                            @csrf
+                                            <td><strong>{{ $card->card_holder }}</strong></td>
+                                            <td><label for="cardNumber"></label><input name="cardNumber" type="text"
+                                                    value="{{ $card->credit_card_number }}" readonly></td>
+                                            <td><label for="expirationDate"></label><input name="expirationDate"
+                                                    id="expirationDate" type="date"
+                                                    value="{{ $card->expirationDate }}" readonly></td>
+                                            <td><button class="btn btn-warning" onclick="edit()">Edit</button></td>
+                                            <td><button class="btn btn-info" onclick="save()">Save</button></td>
+                                            <td><a href="/wallet/{{ Auth::user()->id }}"><button class="btn btn-success" name="action"value="Update">Update</button></a></td>
+                                            <td><a href="/wallet/{{ Auth::user()->id }}"><button
+                                                        class="btn btn-dark"
+                                                        name="action"value="Delete">Delete</button></a></td>
+                                        </form>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-
-
-
-
         </section>
     @endsection
     <script>
-        // $(document).ready(function() {
-        //     fetchtask();
-        //     $('#addTask').on('submit', function(e) {
-        //         e.preventDefault();
-        //         $.ajax({
-        //             type: "POST",
-        //             url: "/addtask/{id}",
-        //             data: $('#addTask').serialize(),
-        //             success: function(response) {
-        //                 alert('Task Added!');
-        //                 fetchtask();
-        //             },
-        //             error: function(error) {
-        //                 alert('Task not added!')
-        //             }
-        //         });
-        //     });
+        function edit() {
+            event.preventDefault();
+            const nodes = document.querySelectorAll("input")
+            for (var i = 0; i < nodes.length; i++)
+                nodes[i].readOnly = false;
+        }
 
-        //     function fetchtask() {
-        //         $.ajax({
-        //             type: "GET",
-        //             url: "/gettask/{id}",
-        //             dataType: 'json',
-        //             success: function(response) {
-        //                 $.each(response.task, function(key, item) {
-        //                     var text;
-        //                     var icon = "badge";
-        //                     var icon2;
+        function save() {
+            event.preventDefault();
+            const nodes = document.querySelectorAll("input")
+            for (var i = 0; i < nodes.length; i++)
+                nodes[i].readOnly = true;
 
-        //                     switch (item.priority) {
-        //                         case 'high':
-        //                             text = "High";
-        //                             icon2 = "-danger"
-        //                             break;
-        //                         case 'middle':
-        //                             text = "Middle";
-        //                             icon2 = "-warning"
-        //                             break;
-        //                         case 'low':
-        //                             icon2 = "-success"
-        //                             text = "Low";
-        //                             break;
-        //                         default:
-        //                             break;
-        //                     }
-        //                     $('tbody').append('<tr>\
-        //                             <td><strong>' + item.taskType + '</td>\
-        //                             <td><strong>' + item.taskDescription + '</td>\
-        //                             <td><strong><h6 class = "badge bg'+icon2+'">' + text + '</h6></td>\
-        //                             <td><input id="completion" type="date" value=' + item.date + '></td>\
-        //                             <td><button type="button" class="btn btn-warning">Edit</button></td>\
-        //                             <td><button type="button" class="btn btn-danger">Delete</button></td>\
-        //                             </tr>');
-        //                 });
-        //             },
-        //             error: function(error) {
-        //                 alert('No Tasks Found')
-        //             }
-        //         });
-        //     }
-
-
-        // });
-
-        // function addItem() {
-        //     var formData = document.getElementById('addTask')
-
-        //     var todoData = document.getElementById('todoTable');
-        //     // insert a row at the start of todolist
-        //     let newRow = todoData.insertRow(1);
-        //     var els = document.getElementsByTagName('tr');
-        //     for (var i = 0; i < els.length; i++) {
-        //         els[i].style.borderBottom = "1px solid rgb(214, 206, 206)";
-        //     }
-
-        //     // Insert a cell in the row at index 0
-        //     let newCell1 = newRow.insertCell(0);
-        //     let newCell2 = newRow.insertCell(1);
-        //     let newCell3 = newRow.insertCell(2);
-        //     let newCell4 = newRow.insertCell(3);
-        //     let newCell5 = newRow.insertCell(4);
-
-        //     // Append a text node to the cell
-        //     let memeberName = document.createTextNode(formData.taskType.value);
-        //     let taskD = document.createTextNode(formData.taskDescription.value);
-        //     taskD.id = "NotComplete";
-
-        //     let priorityLevel = document.createElement('h6');
-        //     var priorityIcon = document.createElement('span');
-
-        //     switch (formData.priority.value) {
-        //         case 'high':
-        //             priorityIcon.className = "badge bg-danger";
-        //             priorityIcon.textContent = "High";
-        //             break;
-        //         case 'middle':
-        //             priorityIcon.className = "badge bg-warning";
-        //             priorityIcon.textContent = "Middle";
-        //             break;
-        //         case 'low':
-        //             priorityIcon.className = "badge bg-success";
-        //             priorityIcon.textContent = "Low";
-        //             break;
-        //         default:
-        //             break;
-        //     }
-        //     priorityLevel.appendChild(priorityIcon);
-
-        //     let action = document.createElement('a');
-        //     action.setAttribute('href', "#");
-        //     var tick = document.createElement('i');
-        //     tick.className = "fas fa-check text-success me-3"; // tick
-        //     tick.setAttribute("onclick", "completeTask(this)");
-        //     action.appendChild(tick);
-        //     var trash = document.createElement('i');
-        //     trash.className = "fas fa-trash-alt text-danger";
-        //     trash.setAttribute("onclick", "removeItem(this)");
-        //     action.appendChild(trash);
-
-        //     let dateCompletion = document.createElement('input')
-        //     dateCompletion.id = "completion";
-        //     dateCompletion.setAttribute("type", "date");
-        //     dateCompletion.setAttribute("value", formData.completionDate.value);
-
-        //     newCell1.appendChild(memeberName);
-        //     newCell2.appendChild(taskD);
-        //     newCell3.appendChild(priorityLevel);
-        //     newCell4.appendChild(action);
-        //     newCell5.appendChild(dateCompletion);
-        //     document.getElementById('addTask').reset();
-
-        // }
-
-        // function resetList() {
-        //     document.getElementById('addTask').reset();
-        // }
-
-        // function print() {
-        //     console.log("hello");
-        // }
-
-        // function removeItem(el) {
-        //     // while there are parents, keep going until reach TR
-        //     while (el.parentNode && el.tagName.toLowerCase() != 'tr') {
-        //         el = el.parentNode;
-        //     }
-        //     // If el has a parentNode it must be a TR, so delete it
-        //     el.parentNode.removeChild(el);
-        // }
-
-        // function completeTask(el) {
-        //     console.log("complete task");
-        //     while (el.parentNode && el.tagName.toLowerCase() != 'tr') {
-        //         el = el.parentNode
-
-        //     }
-        //     el.style.textDecoration = "line-through";
-        // }
-
-        // var textWrapper = document.querySelector('.ml6 .letters');
-        // textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-        // anime.timeline({
-        //         loop: true
-        //     })
-        //     .add({
-        //         targets: '.ml6 .letter',
-        //         translateY: ["1.1em", 0],
-        //         translateZ: 0,
-        //         duration: 750,
-        //         delay: (el, i) => 50 * i
-        //     }).add({
-        //         targets: '.ml6',
-        //         opacity: 0,
-        //         duration: 1000,
-        //         easing: "easeOutExpo",
-        //         delay: 1000
-        //     });
+        }
     </script>
 </body>
 

@@ -15,6 +15,8 @@ class order extends Model
         'credit_card_number',
         'title',
         'price',
+        'date',
+        'userId'
     ];
     public $timestamps = false;
 }

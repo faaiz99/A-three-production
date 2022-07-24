@@ -7,13 +7,15 @@ use App\Models\contact;
 
 class contactController extends Controller
 {
-    function sendMessage(Request $req){
+    function sendMessage(Request $request){
+
+        //dd($request);
         $message = new contact;
-        $message->first_name = $req->first_name;
-        $message->last_name = $req->last_name;
-        $message->subject = $req->subject;
-        $message->email = $req->email;
-        $message->message = $req->message;
+        $message->first_name = $request->fname;
+        $message->last_name = $request->lname;
+        $message->subject = $request->subject;
+        $message->email = $request->email;
+        $message->message = $request->message;
         $message->save();
         return redirect('/contact')->with('success', 'Message succesfully sent');
     }

@@ -19,7 +19,8 @@
     <section>
         <div class="row">
             <div class="col-lg-3 col-md-2 col-sm-12">
-                <nav class="navbar1 navbar-expand-xl bg-dark">
+                @include('admin.sidebar');
+                {{-- <nav class="navbar1 navbar-expand-xl bg-dark">
                     <div class="sidebar-header">
                         <h3></h3>
                     </div>
@@ -69,12 +70,11 @@
                         </ul>
                     </div>
                 </div>
-
                 <div class="container-fluid mt-3 mb-1">
                     <button class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
                         <i class="fa-solid fa-bars "></i>
                     </button>
-                </div>
+                </div> --}}
             </div>
             <div class="section col-lg-6 col-md-8 mt-5">
                 @if (Session::has('Success'))
@@ -86,8 +86,9 @@
                 </div>
                 @endif
 
+                  <div class="container">
                     <h4>Update Profile</h4>
-                    <form method="POST" action="/update/{id}">
+                    <form method="POST" action="/admin/update/{id}">
                         @csrf
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('New name') }}</label>
@@ -135,25 +136,6 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="row mb-3">
-                            <label for="password"
-                                class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password"
-                                    class="form-control @error('password') is-invalid @enderror" name="password" required
-                                    autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            {{-- <input type="hidden" value = {}}> --}}
-                        </div>
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -163,88 +145,22 @@
                         </div>
                     </form>
                 </div>
+                </div>
             </div>
-
-            {{-- <div class="col-sm-6 text-center" style="padding: 10px;">
-                <h4>Update Profile</h4>
-                <form method="POST" action="/update/{id}">
-                    @csrf
-                    <div class="row mb-3">
-                        <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('New name') }}</label>
-
-                        <div class="col-md-6">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                name="name" required value="{{ Auth::user()->name }}" required autocomplete="name"
-                                autofocus>
-
-                            @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="email_old"
-                            class="col-md-4 col-form-label text-md-end">{{ __('Old Email Address') }}</label>
-
-                        <div class="col-md-6">
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                required name="email_old" value="{{ Auth::user()->email }}" autocomplete="email">
-
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="email_new"
-                            class="col-md-4 col-form-label text-md-end">{{ __('New Email Address') }}</label>
-
-                        <div class="col-md-6">
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                required name="email_new" value="{{ old('email') }}" autocomplete="email">
-
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="password"
-                            class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                        <div class="col-md-6">
-                            <input id="password" type="password"
-                                class="form-control @error('password') is-invalid @enderror" name="password" required
-                                autocomplete="new-password">
-
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="row mb-0">
-                        <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
-                                {{ __('Update') }}
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div> --}}
         </div>
     </section>
     @endsection
 </body>
+<script>
+    //  $(document).ready(function(){
+    //             $('.sidebar-item').click("click", function(event){
+    //             event.preventDefault();
+    //             $('.container').load($(this)).attr('href');
+
+    //         });
+    //     });
+
+</script>
 </html>
 
 

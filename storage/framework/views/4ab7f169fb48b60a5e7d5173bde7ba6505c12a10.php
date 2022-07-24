@@ -44,10 +44,10 @@
               </div>
             </div>
             <div class="d-flex justify-content-between total font-weight-bold mt-4">
-              <span>Total:</span><span>$5999</span>
+              <span>Total:</span><span><?php echo e('$'.$services[0]->price); ?></span>
             </div>
             <br>
-            <a href="/quotation/<?php echo e($services[0]->id); ?>" class="btn btn-primary">Get a Quotation <?php echo e($services[0]->id); ?></a>
+            <a href="/quotation/<?php echo e($services[0]->id); ?>" class="btn btn-dark">Get a Quotation <?php echo e($services[0]->id); ?></a>
           </div>
         </div>
       </div>
@@ -75,10 +75,10 @@
               </div>
             </div>
             <div class="d-flex justify-content-between total font-weight-bold mt-4">
-              <span>Total:</span><span>$4999</span>
+              <span>Total:</span><span><?php echo e('$'.$services[1]->price); ?></span>
             </div>
             <br>
-            <a href="/quotation/<?php echo e($services[1]->id); ?>" class="btn btn-primary">Get a Quotation <?php echo e($services[1]->id); ?></a>
+            <a href="/quotation/<?php echo e($services[1]->id); ?>" class="btn btn-dark">Get a Quotation <?php echo e($services[1]->id); ?></a>
           </div>
         </div>
       </div>
@@ -106,10 +106,10 @@
               </div>
             </div>
             <div class="d-flex justify-content-between total font-weight-bold mt-4">
-              <span>Total:</span><span>$9999</span>
+              <span>Total:</span><span><?php echo e('$'.$services[2]->price); ?></span>
             </div>
             <br>
-            <a href="/quotation/<?php echo e($services[2]->id); ?>" class="btn btn-primary">Get a Quotation <?php echo e($services[2]->id); ?></a>
+            <a href="/quotation/<?php echo e($services[2]->id); ?>" class="btn btn-dark">Get a Quotation <?php echo e($services[2]->id); ?></a>
           </div>
         </div>
       </div>
@@ -141,10 +141,10 @@
               </div>
             </div>
             <div class="d-flex justify-content-between total font-weight-bold mt-4">
-              <span>Total:</span><span>$1999</span>
+              <span>Total:</span><span><?php echo e('$'.$services[3]->price); ?></span>
             </div>
             <br>
-            <a href="/quotation/<?php echo e($services[3]->id); ?>" class="btn btn-primary">Get a Quotation <?php echo e($services[3]->id); ?></a>
+            <a href="/quotation/<?php echo e($services[3]->id); ?>" class="btn btn-dark">Get a Quotation <?php echo e($services[3]->id); ?></a>
           </div>
         </div>
       </div>
@@ -172,10 +172,10 @@
               </div>
             </div>
             <div class="d-flex justify-content-between total font-weight-bold mt-4">
-              <span>Total:</span><span>$11,999</span>
+              <span>Total:</span><span><?php echo e('$'.$services[4]->price); ?></span>
             </div>
             <br>
-            <a href="/quotation/<?php echo e($services[4]->id); ?>" class="btn btn-primary">Get a Quotation <?php echo e($services[4]->id); ?></a>
+            <a href="/quotation/<?php echo e($services[4]->id); ?>" class="btn btn-dark">Get a Quotation <?php echo e($services[4]->id); ?></a>
           </div>
         </div>
       </div>
@@ -203,10 +203,10 @@
               </div>
             </div>
             <div class="d-flex justify-content-between total font-weight-bold mt-4">
-              <span>Total:</span><span>$1999</span>
+              <span>Total:</span><span><?php echo e('$'.$services[5]->price); ?></span>
             </div>
             <br>
-            <a href="/quotation/<?php echo e($services[5]->id); ?>" class="btn btn-primary">Get a Quotation <?php echo e($services[5]->id); ?></a>
+            <a href="/quotation/<?php echo e($services[5]->id); ?>" class="btn btn-dark">Get a Quotation <?php echo e($services[5]->id); ?></a>
           </div>
         </div>
       </div>
@@ -234,10 +234,10 @@
               </div>
             </div>
             <div class="d-flex justify-content-between total font-weight-bold mt-4">
-              <span>Total</span><span>$999</span>
+              <span>Total</span><span><?php echo e('$'.$services[6]->price); ?></span>
             </div>
             <br>
-            <a href="/quotation/<?php echo e($services[6]->id); ?>" class="btn btn-primary">Get a Quotation <?php echo e($services[6]->id); ?></a>
+            <a href="/quotation/<?php echo e($services[6]->id); ?>" class="btn btn-dark">Get a Quotation <?php echo e($services[6]->id); ?></a>
           </div>
         </div>
       </div>

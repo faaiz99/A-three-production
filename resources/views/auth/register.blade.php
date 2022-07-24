@@ -35,13 +35,15 @@
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
+                                <input id="name" type="text" class="form-control" name="name" id="name" minlength="3" maxlenth="30" required autocomplete="name" autofocus>
+                                <div id="namevalid" class="form-text text-muted invalid-feedback">
+                                    Your name should be 3-30 characters long and shouldn't contain a number
+                                </div>
+                                {{-- @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                @enderror --}}
                             </div>
                         </div>
 
@@ -49,8 +51,10 @@
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" >
+                                <div id="emailvalid" class="form-text text-muted invalid-feedback">
+                                    Your email must be a valid email
+                                </div>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -64,7 +68,9 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
+                                <div id="passwordvalid" class="form-text text-muted invalid-feedback">
+                                    Your password must be 8-14 characters long and must contain a special character and a number
+                                </div>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -108,5 +114,62 @@
             </div>
         </div>
     </div>
+    <script>
+        const name= document.getElementById('name');
+        const email= document.getElementById('email');
+        const password= document.getElementById('password');
+
+        // console.log("hello");
+        name.addEventListener('blur', ()=>{
+            console.log("name is blurred");
+            // Name Validation
+            let regex = /^[a-zA-Z\s]+$/;
+            let str = name.value;
+            console.log(regex, str);
+
+            if(regex.test(str)){
+                console.log('Name is valid');
+                name.classList.remove('is-invalid')
+            }
+            else{
+                console.log('Name is not valid');
+                name.classList.add('is-invalid')
+            }
+        })
+
+        email.addEventListener('blur', ()=>{
+            console.log("email is blurred");
+            // Email validation
+            let regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            let str = email.value;
+            console.log(regex, str);
+
+            if(regex.test(str)){
+                console.log('Email is valid');
+                email.classList.remove('is-invalid')
+            }
+            else{
+                console.log('Email is not valid');
+                email.classList.add('is-invalid')
+            }
+        })
+
+        password.addEventListener('blur', ()=>{
+            console.log("password is blurred");
+            // Password validation
+            let regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+            let str = password.value;
+            console.log(regex, str);
+
+            if(regex.test(str)){
+                console.log('Password is valid');
+                password.classList.remove('is-invalid')
+            }
+            else{
+                console.log('Password is not valid');
+                password.classList.add('is-invalid')
+            }
+        })
+    </script>
 </div>
 @endsection

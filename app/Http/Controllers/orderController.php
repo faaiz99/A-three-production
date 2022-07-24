@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\order;
 use App\Models\User;
+use App\Models\wallet;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -42,19 +43,45 @@ class orderController extends Controller
     public function store(Request $request)
     {
         if(Auth::check()){
+
+          //  dd($request);
             $order = new order;
             $order->card_holder = $request->input('username');
             $order->title = $request->input('title');
             $order->price = $request->input('price');
             $order->credit_card_number = $request->input('cardNumber');
-
+            $order->date = $request->input('finalSelectedDate');
+            $order->userId = $request->input('userId');
             $orderId = DB::table('orders')
-            ->select('id')
-            ->where('card_holder','=',Auth::user()->name)
+            ->select('id','credit_card_number','card_holder')
+            ->where('userId','=', $request->userId)
             ->get()->first();
 
-
+            //dd($orderId->id);
             $res = $order->save();
+
+            // dd($request);
+
+
+
+
+            // dd(DB::table('wallets')
+            // ->select('*')
+            // ->where('clientId','=',Auth::user()->id)
+            // ->exists());
+            if(!DB::table('wallets')
+            ->select('*')
+            ->where('clientId','=',Auth::user()->id)
+            ->exists()){
+                $wallet = new wallet;
+                $wallet->card_holder = $request->username;
+                $wallet->credit_card_number = $request->cardNumber;
+                $wallet->expirationDate = $request->expirationDate;
+                $wallet->orderId = $orderId->id;
+                $wallet->clientId = $request->userId;
+                $wallet->save();
+            }
+
 
             $user = new User;
             $user->id = Auth::user()->id;
@@ -78,9 +105,7 @@ class orderController extends Controller
             else
              return back()->with('fail','Something went wrong');
         }
-        else{
-            return redirect('/login')->with('login', "Please Login first");
-        }
+        return redirect('/login')->with('login', "Please Login first");
 
     }
 
